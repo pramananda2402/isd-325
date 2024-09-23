@@ -1,0 +1,136 @@
+[
+    {
+        "usecase": {
+            "name": "Train Search",
+            "scenario": "A customer searches for a train from one station to another on a specified date",
+            "acttor": "Customer",
+            "preconditions": "should have registered",
+            "steps": [
+                "valid train search",
+                "select express",
+                "book tickets"
+
+
+            ]
+        },
+        "testcases": [
+            {
+                "name": "Valid date, location and class selection",
+                "description": "verify the required input for train search",
+                "input": {
+
+                },
+                "expected": {
+                    "output":"List of express of train services",
+                    "status": "Approved"
+
+                }
+
+            },
+            {
+                "name": "empty date",
+                "description": {
+
+                },
+                "input": {
+
+                },
+                "expected": {
+                    
+                }
+            },
+            {
+                "name": "empty source location",
+                "description": {
+
+                },
+                "input": {
+
+                },
+                "expected": {
+                    
+                }
+            },
+            {
+                "name": "empty distination location",
+                "description": {
+
+                },
+                "input": {
+
+                },
+                "expected": {
+                    
+                }
+            },
+            {
+                "name": "non select class",
+                "description": {
+
+                },
+                "input": {
+
+                },
+                "expected": {
+                    
+                }
+            },
+            {
+                "name": "Select express ",
+                "description": {
+
+                },
+                "input": {
+
+                },
+                "expected": {
+                    
+                }
+            },
+            {
+                "name": "Select seats ",
+                "description": {
+
+                },
+                "input": {
+
+                },
+                "expected": {
+                    
+                }
+            },
+
+            {
+                "name": "Varification for starting tranaction ",
+                "description": {
+
+                },
+                "input": {
+
+                },
+                "expected": {
+                    
+                }
+            }
+
+        ]
+    },
+
+    {
+        "usecase": {
+            "name": "Register website",
+            "description": 
+        }
+    },
+    {
+        "usecase": {
+            "name": "Login website"
+        }
+    },
+    {
+        "usecase":{
+            "name": "event book // no option avaliavble now to check it"
+            
+        }
+    }
+]
