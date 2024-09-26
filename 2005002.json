@@ -1,0 +1,237 @@
+{
+    "usecases": [
+        {
+            "usecase": {
+                "name": "Train Searh",
+                "scenario": "A custumer serches for a train from one station to anoter on a specified date",
+                "actor": "Customer",
+                "preconditions": "shold have registed",
+                "steps": [
+                    "valid train searh",
+                    "select express",
+                    "book tickets",
+                    "confirm pyment"
+                ]
+            },
+            "testcases": [
+                {
+                    "name": "Valid date, location an clas selection",
+                    "description": "Verify the requird input for train search",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "Dhaka",
+                        "destination": "Chittagong",
+                        "class": "Express"
+                    },
+                    "expected": {
+                        "output": "List of express train services",
+                        "status": "Aproved"
+                    }
+                },
+                {
+                    "name": "Empty dat",
+                    "description": "Check response when no date is provided",
+                    "input": {
+                        "date": "",
+                        "source": "Dhaka",
+                        "destination": "Chittagong",
+                        "class": "Express"
+                    },
+                    "expected": {
+                        "output": "Error: Date is requred",
+                        "status": "Rejcted"
+                    }
+                },
+                {
+                    "name": "Invalid date format",
+                    "description": "Check response when an invalid date format is provided",
+                    "input": {
+                        "date": "2024/05/10",
+                        "source": "Dhaka",
+                        "destination": "Chittagong",
+                        "class": "Express"
+                    },
+                    "expected": {
+                        "output": "Error: Invaled date format",
+                        "status": "Rejeted"
+                    }
+                },
+                {
+                    "name": "Empty source locaton",
+                    "description": "Check response when no source location is provided",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "",
+                        "destination": "Chittagong",
+                        "class": "Express"
+                    },
+                    "expected": {
+                        "output": "Error: Source location is requred",
+                        "status": "Rejcted"
+                    }
+                },
+                {
+                    "name": "Invalid source locaton",
+                    "description": "Check response when an invalid source location is provided",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "InvaledCity",
+                        "destination": "Chittagong",
+                        "class": "Express"
+                    },
+                    "expected": {
+                        "output": "Error: Invalid source location",
+                        "status": "Rejeted"
+                    }
+                },
+                {
+                    "name": "Empty destnation locaton",
+                    "description": "Check response when no destination location is provided",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "Dhaka",
+                        "destination": "",
+                        "class": "Express"
+                    },
+                    "expected": {
+                        "output": "Error: Destination locaton is requred",
+                        "status": "Rejcted"
+                    }
+                },
+                {
+                    "name": "Invalid destnation locaton",
+                    "description": "Check response when an invalid destination location is provided",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "Dhaka",
+                        "destination": "InvalidCity",
+                        "class": "Express"
+                    },
+                    "expected": {
+                        "output": "Error: Invalid destnation location",
+                        "status": "Rejeted"
+                    }
+                },
+                {
+                    "name": "Non-select clas",
+                    "description": "Check response when no class is selectd",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "Dhaka",
+                        "destination": "Chittagong",
+                        "class": ""
+                    },
+                    "expected": {
+                        "output": "Error: Class selectn is requred",
+                        "status": "Rejeted"
+                    }
+                },
+                {
+                    "name": "Invalid clas selectn",
+                    "description": "Check response when an invalid class is selected",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "Dhaka",
+                        "destination": "Chittagong",
+                        "class": "InvalidClas"
+                    },
+                    "expected": {
+                        "output": "Error: Invalid class selectn",
+                        "status": "Rejeted"
+                    }
+                },
+                {
+                    "name": "Select express",
+                    "description": "Verify the list of available express trains when 'Express' class is selected",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "Dhaka",
+                        "destination": "Chittagong",
+                        "class": "Express"
+                    },
+                    "expected": {
+                        "output": "List of available express trains",
+                        "status": "Aproved"
+                    }
+                },
+                {
+                    "name": "Empty seat selection",
+                    "description": "Check response when no seats are selected",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "Dhaka",
+                        "destination": "Chittagong",
+                        "class": "Express",
+                        "seats": 0
+                    },
+                    "expected": {
+                        "output": "Error: At least one seat must be selectd",
+                        "status": "Rejeted"
+                    }
+                },
+                {
+                    "name": "Select seats",
+                    "description": "Verify seat selecton functionality",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "Dhaka",
+                        "destination": "Chittagong",
+                        "class": "Express",
+                        "seats": 2
+                    },
+                    "expected": {
+                        "output": "Seats selected sucessfully",
+                        "status": "Aproved"
+                    }
+                },
+                {
+                    "name": "Insufficient seats available",
+                    "description": "Check response when the number of requested seats exceeds available seats",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "Dhaka",
+                        "destination": "Chittagong",
+                        "class": "Express",
+                        "seats": 10
+                    },
+                    "expected": {
+                        "output": "Error: Insufficient seats avaiable",
+                        "status": "Rejeted"
+                    }
+                },
+                {
+                    "name": "Verification for starting transaction",
+                    "description": "Check the verificaton process when initiating a transacton",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "Dhaka",
+                        "destination": "Chittagong",
+                        "class": "Express",
+                        "seats": 2,
+                        "payment": "pending"
+                    },
+                    "expected": {
+                        "output": "Transaction initiation verificatn",
+                        "status": "Aproved"
+                    }
+                },
+                {
+                    "name": "Invalid pyment method",
+                    "description": "Check response when an invalid payment method is provided",
+                    "input": {
+                        "date": "26-09-2024",
+                        "source": "Dhaka",
+                        "destination": "Chittagong",
+                        "class": "Express",
+                        "seats": 2,
+                        "payment": "InvalidMethod"
+                    },
+                    "expected": {
+                        "output": "Error: Invalid payment method",
+                        "status": "Rejeted"
+                    }
+                }
+            ]
+        }
+    ]
+}
