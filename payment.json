@@ -1,0 +1,43 @@
+[
+    {
+        "usecase":{
+            "name": "payment for ticket",
+            "senario": "client select seats and pay for the ticket",
+            "actors": "client",
+            "preconditions":"client must be select  one or more seats of any express",
+            "steps":[
+                
+                "select payment method",
+                "payment conformation",
+                "ticket booking successfully"
+            ]
+        },
+        "testcases":[
+            
+            {
+                "name":"select payment method",
+                "description":"",
+                "input":{
+                    "selected method": "bikash"
+
+                },
+                "expected":{
+                    "output":"proceded to the payment section",
+                    "status":"approved"
+                }
+            },
+            {
+                "name":"payment conformation",
+                "description":"",
+                "input":{
+                    
+                },
+                "expected":{
+                    "output":"proceded to the reserved ticket",
+                    "status":"approved"
+                }
+            }
+        ]
+
+    }
+]

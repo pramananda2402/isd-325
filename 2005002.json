@@ -2,7 +2,7 @@
     "usecases": [
         {
             "usecase": {
-                "name": "Train Searh",
+                "name": "Train Selection",
                 "scenario": "A custumer serches for a train from one station to anoter on a specified date",
                 "actor": "Customer",
                 "preconditions": "shold have registed",
@@ -29,7 +29,7 @@
                     }
                 },
                 {
-                    "name": "Empty dat",
+                    "name": "Empty date",
                     "description": "Check response when no date is provided",
                     "input": {
                         "date": "",

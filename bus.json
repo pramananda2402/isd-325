@@ -1,0 +1,238 @@
+{
+    "usecases": [
+      {
+        "usecase": {
+          "name": "Bus Selection",
+          "scenario": "A customer searches for a bus from one station to another, selects a specific bus, and proceeds to book tickets by providing necessary details.",
+          "actor": "Customer",
+          "preconditions": [
+            "User must have access to the internet and the shouz.com website or mobile app.",
+            "User must be on the bus search page."
+          ],
+          "postconditions": [
+            "Successful completion of booking and ticket generation."
+          ],
+          "steps": [
+            "Customer searches for a bus from one station to another.",
+            "Filter buses by type (e.g., express, AC, non-AC).",
+            "Select a bus from the available options.",
+
+
+            "Choose a seat and book tickets.",
+            "Enter contact and personal information.",
+
+
+            "Review and confirm booking.",
+            "proced to payment"
+          ]
+        },
+        "testcases": [
+          {
+            "name": "One Way Bus Selection - Valid",
+            "description": "Customer searches for a one-way bus and selects the appropriate option.",
+            "input": {
+              "departureStation": "Dhaka",
+
+
+              "arrivalStation": "Rajshahi",
+              "date": "2024-10-10"
+
+
+            },
+            "expected": {
+              "output": "Display available buses from Dhaka to Rajshahi for the selected date.",
+              "status": "Approved"
+            }
+          },
+          {
+            "name": "One Way Bus Selection - No Buses Available",
+            "description": "Customer searches for a bus but no buses are available on the selected date.",
+            "input": {
+              "departureStation": "Dhaka",
+              "arrivalStation": "Rajshahi",
+              "date": "2024-10-10"
+
+
+
+            },
+            "expected": {
+              "output": "Display 'No buses available' message.",
+              "status": "Failed"
+            }
+          },
+          {
+            "name": "One Way Bus Selection - Invalid Stations",
+            "description": "Customer enters an invalid departure or arrival station.",
+            "input": {
+              "departureStation": "InvalidStationA",
+              "arrivalStation": "Rajshahi",
+              "date": "2024-10-10"
+
+            },
+            "expected": {
+              "output": "Display error message: 'Invalid station'.",
+              "status": "Failed"
+            }
+          },
+          {
+            "name": "Round Trip Bus Selection - Valid",
+            "description": "Customer searches for a round-trip bus and selects appropriate options for both legs of the journey.",
+            "input": {
+              "departureStation": "Dhaka",
+              "arrivalStation": "Rajshahi",
+
+              "departureDate": "2024-10-10",
+              "returnDate": "2024-10-12"
+            },
+            "expected": {
+              "output": "Display available buses for both departure and return journeys.",
+              "status": "Approved"
+            }
+          },
+          {
+            "name": "Round Trip Bus Selection - Invalid Return Date",
+            "description": "Customer selects a return date that is earlier than the departure date.",
+            "input": {
+              "departureStation": "Dhaka",
+              "arrivalStation": "Station B",
+              "departureDate": "2024-10-12",
+              "returnDate": "2024-10-10"
+
+
+            },
+            "expected": {
+              "output": "Display error message: 'Return date must be after departure date'.",
+              "status": "Failed"
+            }
+          },
+          {
+            "name": "Filter for Searching Express - Valid",
+            "description": "Customer filters buses by selecting the 'Express' option.",
+            "input": {
+              "filter": "Express"
+
+            },
+            "expected": {
+              "output": "Display only express buses for the selected route.",
+              "status": "Approved"
+            }
+          },
+          {
+            "name": "Filter for Searching Express - No Express Buses",
+            "description": "Customer selects 'Express' filter, but no express buses are available.",
+            "input": {
+              "filter": "Express"
+            },
+            "expected": {
+              "output": "Display 'No express buses available' message.",
+              "status": "Failed"
+            }
+          },
+          {
+            "name": "Select One Bus - Valid",
+            "description": "Customer selects a specific bus from the filtered results.",
+            "input": {
+              "busId": "Tungipara express",
+              
+              "time": "10:00 AM"
+            },
+            "expected": {
+              "output": "Display seating and ticket status for the selected bus.",
+              "status": "Approved"
+            }
+          },
+          {
+            "name": "Select One Bus - Bus Fully Booked",
+            "description": "Customer selects a bus, but all seats are already booked.",
+            "input": {
+              "busId": "Tungipara express",
+              "time": "10:00 AM"
+            },
+            "expected": {
+              "output": "Display 'Bus fully booked' message.",
+              "status": "Failed"
+            }
+          },
+          {
+            "name": "Select Tickets - Valid",
+            "description": "Customer selects specific seats and the number of tickets.",
+            "input": {
+              "busId": "Tungipara express",
+              "seats": ["1A", "1B"],
+              "ticketCount": 2
+            },
+            "expected": {
+              "output": "Selected seats and ticket count confirmed.",
+              "status": "Approved"
+            }
+          },
+          {
+            "name": "Select Tickets - Invalid Seat Selection",
+            "description": "Customer selects seats that are already booked.",
+            "input": {
+              "busId": "Tungipara express",
+              "seats": ["1A", "1B"],
+              "ticketCount": 2
+            },
+            "expected": {
+              "output": "Display 'Selected seats are unavailable' message.",
+              "status": "Failed"
+            }
+          },
+          {
+            "name": "Contact and Personal Information - Valid",
+            "description": "Customer enters their personal and contact information during booking.",
+            "input": {
+              "contact": "1234567890",
+              "email": "abc@gmail.com",
+              "firstname": "John",
+              "lastname": "Doe"
+            },
+            "expected": {
+              "output": "Valid personal and contact information accepted.",
+              "status": "Approved"
+            }
+          },
+          {
+            "name": "Contact and Personal Information - Invalid Email",
+            "description": "Customer enters an invalid email address.",
+            "input": {
+              "contact": "1234567890",
+              "email": "invalid_email",
+              "firstname": "John",
+              "lastname": "Doe"
+            },
+            "expected": {
+              "output": "Display 'Invalid email address' error.",
+              "status": "Failed"
+            }
+          },
+          {
+            "name": "Receive Ticket Confirmation - Valid",
+            "description": "Customer receives a booking confirmation and the ticket.",
+            "input": {
+              "email": "abc@gmail.com",
+              "contact": "1234567890"
+            },
+            "expected": {
+              "output": "Ticket and booking confirmation sent to the provided email and contact number.",
+              "status": "Approved"
+            }
+          },
+          {
+            "name": "Receive Ticket Confirmation - Email Failure",
+            "description": "System fails to send a confirmation email to the customer.",
+            "input": {
+              "email": "abc@gmail.com",
+              "contact": "1234567890"
+            },
+            "expected": {
+              "output": "Display 'Unable to send email confirmation' message.",
+              "status": "Failed"
+            }
+          }
+        ]
+      }
+    ]
+  }
+  
